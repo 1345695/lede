@@ -92,6 +92,7 @@ jobs:
         sudo git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
         sudo git clone -b 18.06 https://github.com/jerrykuku/luci-app-argon-config.git package/lean/luci-app-argon-config
         sudo wget https://raw.githubusercontent.com/1345695/Actions-OpenWrt/main/background/1080.mp4 -P package/lean/luci-theme-argon/htdocs/luci-static/argon/background
+        sudo wget https://raw.githubusercontent.com/coolsnowwolf/lede/8f7e660d4dd97bc9c9f6913e469c1b8417110445/feeds.conf.default -O feeds.conf.default
         sudo rm -rf feeds/packages/net/v2ray-geodata
         sudo rm -rf feeds/packages/net/mosdns
         sudo rm -rf feeds/packages/net/smartdns
