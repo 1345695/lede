@@ -70,10 +70,11 @@ jobs:
         sudo git clone -b v5-lua https://github.com/sbwml/luci-app-mosdns mosdns-lua
         sudo git clone -b v5 https://github.com/sbwml/luci-app-mosdns mosdns-v5
         sudo cp -r pack/luci-app-adguardhome/ openwrt/package/lean/luci-app-adguardhome
-        sudo cp -r pack/luci-app-openclash/ openwrt/package/lean/luci-app-openclash
         sudo cp -r mosdns-lua/luci-app-mosdns/ openwrt/package/lean/luci-app-mosdns
         sudo cp -r mosdns-v5/mosdns/ openwrt/package/lean/mosdns
         sudo cp -r mosdns-v5/v2dat/ openwrt/package/lean/v2dat
+        sudo git clone -b dev --single-branch --filter=blob:none https://github.com/vernesong/OpenClash OpenClash
+        sudo cp -r OpenClash/luci-app-openclash/ openwrt/package/lean/luci-app-openclash
         cd openwrt
         sed -i 's/CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE/g' target/linux/x86/64/config-5.15
         sed -i '/CONFIG_CPU_FREQ_GOV_SCHEDUTIL/a\CONFIG_CPU_FREQ_GOV_PERFORMANCE=y' target/linux/x86/64/config-5.15
@@ -102,6 +103,7 @@ jobs:
         sudo rm -rf feeds/luci/applications/luci-app-argon-config
         sudo rm -rf feeds/luci/applications/luci-app-smartdns
         sudo rm -rf feeds/luci/applications/luci-app-mosdns
+        sudo rm -rf feeds/luci/applications/luci-app-openclash
         ./scripts/feeds update -a
         ./scripts/feeds install -a -f
         ls feeds/luci/themes
