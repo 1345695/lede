@@ -78,7 +78,7 @@ jobs:
         sudo cp -r OpenClash/luci-app-openclash/ openwrt/package/lean/luci-app-openclash
         cd openwrt
         sudo sed -i "s/https:\/\/github.com\/Loyalsoldier\/v2ray-rules-dat\/releases\/latest\/download/http:\/\/10.0.0.10\/meta\/geo/g" package/lean/luci-app-mosdns/root/usr/share/mosdns/mosdns.sh
-        sudo sed -i "s/https:\/\/github.com\/Loyalsoldier\/geoip\/releases\/latest\/download/http:\/\/10.0.0.10\/meta\/geo/g" package/lean/luci-app-mosdns/root/usr/share/mosdns/mosdns.sh
+        sudo sed -i "s/https:\/\/github.com\/Loyalsoldier\/geoip\/releases\/latest\/download\/geoip-only-cn-private.dat/http:\/\/10.0.0.10\/meta\/geo\/geoip.dat/g" package/lean/luci-app-mosdns/root/usr/share/mosdns/mosdns.sh
         sed -i 's/CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE/g' target/linux/x86/64/config-5.15
         sed -i '/CONFIG_CPU_FREQ_GOV_SCHEDUTIL/a\CONFIG_CPU_FREQ_GOV_PERFORMANCE=y' target/linux/x86/64/config-5.15
         sed -i 's/CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE/g' target/linux/x86/64/config-6.6
