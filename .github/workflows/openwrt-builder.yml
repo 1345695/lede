@@ -76,6 +76,10 @@ jobs:
         sudo cp -r mosdns-v5/v2dat/ openwrt/package/lean/v2dat
         sudo git clone -b dev --single-branch --filter=blob:none https://github.com/vernesong/OpenClash OpenClash
         sudo cp -r OpenClash/luci-app-openclash/ openwrt/package/lean/luci-app-openclash
+        sudo rm -rf pack
+        sudo rm -rf mosdns-lua
+        sudo rm -rf mosdns-v5
+        sudo rm -rf OpenClash
         cd openwrt
         sed -i 's/KERNEL_PATCHVER:=6.6/KERNEL_PATCHVER:=6.12/g' target/linux/x86/Makefile
         sudo sed -i "s/https:\/\/github.com\/Loyalsoldier\/v2ray-rules-dat\/releases\/latest\/download/http:\/\/10.0.0.10\/meta\/geo/g" package/lean/luci-app-mosdns/root/usr/share/mosdns/mosdns.sh
