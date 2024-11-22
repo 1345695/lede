@@ -83,6 +83,7 @@ jobs:
         sudo rm -rf mosdns-lua
         sudo rm -rf mosdns-v5
         sudo rm -rf OpenClash
+        sudo rm -rf lede
         cd openwrt
         sed -i 's/KERNEL_PATCHVER:=6.6/KERNEL_PATCHVER:=6.12/g' target/linux/x86/Makefile
         sudo sed -i "s/https:\/\/github.com\/Loyalsoldier\/v2ray-rules-dat\/releases\/latest\/download/http:\/\/10.0.0.10\/meta\/geo/g" package/lean/luci-app-mosdns/root/usr/share/mosdns/mosdns.sh
