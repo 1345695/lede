@@ -1,0 +1,36 @@
+
+config interface 'loopback'
+	option ifname 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config globals 'globals'
+	option packet_steering '1'
+
+config interface 'lan'
+	option ifname 'eth0'
+	option proto 'static'
+	option ipaddr '192.168.50.1'
+	option netmask '255.255.0.0'
+
+config interface 'wan'
+	option proto 'static'
+	option ipaddr '192.168.1.25'
+	option netmask '255.255.0.0'
+	option gateway '192.168.50.253'
+	option ifname 'eth0'
+
+config interface 'IPV6'
+	option proto 'dhcpv6'
+	option ifname 'eth0'
+	option reqprefix 'no'
+	option peerdns '0'
+	option reqaddress 'try'
+
+config interface 'LAN2'
+	option proto 'static'
+	option ifname 'eth0'
+	option ipaddr '10.0.0.1'
+	option netmask '255.255.255.0'
+
