@@ -82,6 +82,10 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a -f
         cd ..
+        wget https://github.com/coolsnowwolf/lede/archive/111e93f75dee275531d5ab06d398a772ca3ddf21.zip -O ledess.zip
+        unzip ledess.zip
+        sudo rm -rf openwrt/package/kernel/r8168
+        sudo cp -r lede-111e93f75dee275531d5ab06d398a772ca3ddf21/package/kernel/r8168/ openwrt/package/kernel/r8168
         sudo git clone -b main --single-branch --filter=blob:none https://github.com/1345695/lede
         sudo git clone https://github.com/kenzok8/openwrt-packages pack
         sudo git clone -b v5-lua https://github.com/sbwml/luci-app-mosdns mosdns-lua
