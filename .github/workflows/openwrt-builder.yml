@@ -140,11 +140,16 @@ jobs:
         sudo cp -r OpenClash/luci-app-openclash/ openwrt/package/lean/luci-app-openclash
         sudo rm -rf pack mosdns-lua mosdns-v5 OpenClash
         cd openwrt
-        sudo sed -i 's/KERNEL_PATCHVER:=6.6/KERNEL_PATCHVER:=5.4/g' target/linux/x86/Makefile
+        sudo sed -i 's/KERNEL_PATCHVER:=6.6/KERNEL_PATCHVER:=6.12/g' target/linux/x86/Makefile
         sudo sed -i "s/https:\/\/github.com\/Loyalsoldier\/v2ray-rules-dat\/releases\/latest\/download/http:\/\/10.0.0.10\/meta\/geo/g" package/lean/luci-app-mosdns/root/usr/share/mosdns/mosdns.sh
         sudo sed -i "s/https:\/\/github.com\/Loyalsoldier\/geoip\/releases\/latest\/download\/geoip-only-cn-private.dat/http:\/\/10.0.0.10\/meta\/geo\/geoip.dat/g" package/lean/luci-app-mosdns/root/usr/share/mosdns/mosdns.sh
-        sudo sed -i 's/CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE/g' target/linux/x86/64/config-5.4
-        sudo sed -i '/CONFIG_CPU_FREQ_GOV_SCHEDUTIL/a\CONFIG_CPU_FREQ_GOV_PERFORMANCE=y' target/linux/x86/64/config-5.4
+        sudo sed -i 's/CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE/g' target/linux/x86/64/config-5.15
+        sudo sed -i '/CONFIG_CPU_FREQ_GOV_SCHEDUTIL/a\CONFIG_CPU_FREQ_GOV_PERFORMANCE=y' target/linux/x86/64/config-5.15
+        sudo sed -i 's/CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE/g' target/linux/x86/64/config-6.6
+        sudo sed -i '/CONFIG_CPU_FREQ_GOV_SCHEDUTIL/a\CONFIG_CPU_FREQ_GOV_PERFORMANCE=y' target/linux/x86/64/config-6.6
+        sudo sed -i 's/CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE/g' target/linux/x86/64/config-6.12
+        sudo sed -i '/CONFIG_CPU_FREQ_GOV_SCHEDUTIL/a\CONFIG_CPU_FREQ_GOV_PERFORMANCE=y' target/linux/x86/64/config-6.12
+        sudo sed -i 's/CONFIG_DRM_I915=y/# CONFIG_DRM_I915=y/g' target/linux/x86/64/config-6.12
         sudo sed -i "s/set network.globals.ula_prefix='auto'//g" package/base-files/files/bin/config_generate
         sudo sed -i 's/192.168.1.1/192.168.50.1/g' package/base-files/files/bin/config_generate
         sudo sed -i "s/set network.globals.ula_prefix='auto'//g" package/base-files/luci2/bin/config_generate
