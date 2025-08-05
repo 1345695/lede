@@ -136,7 +136,7 @@ jobs:
         sudo cp -r mosdns-lua/luci-app-mosdns/ openwrt/package/lean/luci-app-mosdns
         sudo cp -r mosdns-v5/mosdns/ openwrt/package/lean/mosdns
         sudo cp -r mosdns-v5/v2dat/ openwrt/package/lean/v2dat
-        sudo git clone -b dev --single-branch --filter=blob:none https://github.com/vernesong/OpenClash OpenClash
+        sudo git clone -b master --single-branch --filter=blob:none https://github.com/vernesong/OpenClash OpenClash
         sudo cp -r OpenClash/luci-app-openclash/ openwrt/package/lean/luci-app-openclash
         sudo rm -rf pack mosdns-lua mosdns-v5 OpenClash
         cd openwrt
