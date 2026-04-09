@@ -49,45 +49,26 @@ jobs:
         echo "=============================================================================="
         df -hT
         echo "=============================================================================="
-    #
-    # - name: "Optimize Disk Space"
-    #   uses: "hugoalh/disk-space-optimizer-ghaction@v0.8.1"
-    #   with:
-    #     operate_sudo: "True"
-    #     general_include: ".+"
-    #     general_exclude: |-
-    #       ^GCC$
-    #       ^G\+\+$
-    #       Clang
-    #       LLVM
-    #     docker_include: ".+"
-    #     docker_prune: "True"
-    #     docker_clean: "True"
-    #     apt_prune: "True"
-    #     apt_clean: "True"
-    #     homebrew_prune: "True"
-    #     homebrew_clean: "True"
-    #     npm_prune: "True"
-    #     npm_clean: "True"
-    #     os_swap: "True"
-    #
-    # - name: Freeing up disk space
-    #   uses: easimon/maximize-build-space@master
-    #   with: 
-    #     root-reserve-mb: 2048
-    #     swap-size-mb: 1
-    #     remove-dotnet: 'true'
-    #     remove-android: 'true'
-    #     remove-haskell: 'true'
-    #     remove-codeql: 'true'
-    #     remove-docker-images: 'true'
-    #
-    # - name: Free up disk space complete
-    #   run: |
-    #     echo "Free up disk space complete"
-    #     echo "=============================================================================="
-    #     df -hT
-    #     echo "=============================================================================="
+    # 新增：释放最大的磁盘空间（替换掉你原来注释掉的那些 Action）
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+      with:
+        # 这可以清理大约 30GB 的空间
+        tool-cache: true
+        android: true
+        dotnet: true
+        haskell: true
+        large-packages: true
+        docker-images: true
+        # 注意：不要清理 swap！编译 OpenWrt (特别是 Rust/C++ 模块) 极其消耗内存，保留 swap 防止 OOM 崩溃
+        swap-storage: false
+
+    - name: Free up disk space complete
+      run: |
+        echo "Free up disk space complete"
+        echo "=============================================================================="
+        df -hT
+        echo "=============================================================================="
 
     - name: Checkout
       uses: actions/checkout@main
